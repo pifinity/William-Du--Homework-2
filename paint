@@ -1,0 +1,40 @@
+import java.io.*;
+import java.util.*;
+
+class paint {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new FileReader("paint.in"));
+        PrintWriter out = new PrintWriter("paint.out");
+
+        int[] fence = new int[101];
+
+        int[][] paints = new int[2][2];
+
+
+        for (int i = 0 ; i<2; i++) {
+            StringTokenizer st = new StringTokenizer(bf.readLine());
+            paints[i][0] = Integer.parseInt(st.nextToken());
+            paints[i][1] = Integer.parseInt(st.nextToken());
+
+        }
+
+        for (int i = paints[0][0]+1; i<=paints[0][1]; i++){
+            fence[i]++;
+        }
+
+        for (int i = paints[1][0]+1; i<=paints[1][1]; i++){
+            fence[i]++;
+        }
+
+        int solution = 0;
+
+        for (int i = 0; i<101; i++){
+            if(fence[i]>0) solution++;
+        }
+
+        System.out.println(Arrays.toString(fence));
+
+        out.print(solution);
+        out.close();
+    }
+}
